@@ -22,7 +22,7 @@ const InputDisplay = (props) => {
                 <input onChange={onRateChange} value={rate} name='rate' type='number' />
                 <br />
                 <label>Time (t) in years</label>
-                <input onChange={onRateChange} value={time} name='time' type='number' />
+                <input onChange={onTimeChange} value={time} name='time' type='number' />
             </div>
         );
     else if(props.solveFor === 'principal')
