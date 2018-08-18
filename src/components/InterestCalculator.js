@@ -10,54 +10,76 @@ class InterestCalculator extends Component {
         super(props);
         this.state = {
             solveFor: 'interest',
-            principal: NaN,
-            rate: NaN,
-            time: NaN,
-            totalAmount: NaN
+            principal: '',
+            rate: '',
+            time: '',
+            totalAmount: ''
         }
         this.handleSolveForChange = this.handleSolveForChange.bind(this);
-        this.handleCalculateClick = this.handleCalculateClick.bind(this);
         this.handlePrincipalChange = this.handlePrincipalChange.bind(this);
         this.handleRateChange = this.handleRateChange.bind(this);
         this.handleTimeChange = this.handleTimeChange.bind(this);
         this.handleTotalAmountChange = this.handleTotalAmountChange.bind(this);
+        this.handleCalculateClick = this.handleCalculateClick.bind(this);
     }
 
     handleSolveForChange(event) {
         const select = event.target;
         const selectedOption = select.options[select.selectedIndex];
         this.setState({
-            solveFor: selectedOption.value
+            solveFor: selectedOption.value,
+            principal: '',
+            rate: '',
+            time: '',
+            totalAmount: ''
         });
-        console.log(this.state.solveFor);
+
+    }
+
+    handlePrincipalChange(e) {
+        this.setState({
+            principal: e.target.value
+        });
+    }
+
+    handleRateChange(e) {
+        this.setState({
+            rate: e.target.value
+        });
+    }
+
+    handleTimeChange(e) {
+        this.setState({
+            time: e.target.value
+        });
+    }
+
+    handleTotalAmountChange(e) {
+        this.setState({
+            totalAmount: e.target.value
+        });
     }
 
     handleCalculateClick() {
 
     }
 
-    handlePrincipalChange() {
-
-    }
-
-    handleRateChange() {
-        
-    }
-
-    handleTimeChange() {
-        
-    }
-
-    handleTotalAmountChange() {
-        
-    }
 
     render() {
 
         return (
             <div className='interest-calculator'>
                 <SolveForDisplay onSolveForChange={this.handleSolveForChange}/>
-                <InputDisplay solveFor={this.state.solveFor} />
+                <InputDisplay solveFor={this.state.solveFor}
+                              principal={this.state.principal}
+                              rate={this.state.rate}
+                              time={this.state.time}
+                              totalAmount={this.state.totalAmount}
+                              onPrincipalChange={this.handlePrincipalChange}
+                              onRateChange={this.handleRateChange}
+                              onTimeChange={this.handleTimeChange}
+                              onTotalAmountChange={this.handleTotalAmountChange}
+                />
                 <AnswerDisplay />
                 <button onClick={this.handleCalculateClick}>Calculate</button>
             </div>
