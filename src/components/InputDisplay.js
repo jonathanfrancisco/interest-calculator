@@ -14,10 +14,10 @@ const InputDisplay = (props) => {
                 <label>Prinicipal Amount (P)</label>
                 <input name='principal' type='number' />
                 <br />
-                <label>Rate (r): %</label>
+                <label>Rate (r): % per year</label>
                 <input name='rate' type='number' />
                 <br />
-                <label>Time (t)</label>
+                <label>Time (t) in years</label>
                 <input name='time' type='number' />
             </div>
         );
@@ -27,10 +27,10 @@ const InputDisplay = (props) => {
                 <label>Total Amount (A)</label>
                 <input name='amount' type='number' />
                 <br />
-                <label>Rate (r): %</label>
+                <label>Rate (r): % per year</label>
                 <input name='rate' type='number' />
                 <br />
-                <label>Time (t)</label>
+                <label>Time (t) in years</label>
                 <input name='time' type='number' />
             </div>
         );
@@ -43,7 +43,7 @@ const InputDisplay = (props) => {
                 <label>Total Amount (A)</label>
                 <input name='amount' type='number' />
                 <br />
-                <label>Time (t)</label>
+                <label>Time (t) in years</label>
                 <input name='time' type='number' />
             </div>
         );
@@ -56,7 +56,7 @@ const InputDisplay = (props) => {
                 <label>Total Amount (A)</label>
                 <input name='amount' type='number' />
                 <br />
-                <label>Rate (r): %</label>
+                <label>Rate (r): % per year</label>
                 <input name='rate' type='number' />
                 <br />
             </div>
