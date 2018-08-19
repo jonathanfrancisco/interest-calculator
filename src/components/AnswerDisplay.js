@@ -5,11 +5,11 @@
 import React from 'react';
 
 
-const AnswerDisplay  = (propps) => {
+const AnswerDisplay  = (props) => {
     return (
         <div className='interest-calculator__answer-display'>
             <h2>Answer:</h2>
-            <p></p>
+            <p>{props.answer}</p>
         </div>
     );
 }
