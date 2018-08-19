@@ -21,7 +21,7 @@ class InterestCalculator extends Component {
         this.handleRateChange = this.handleRateChange.bind(this);
         this.handleTimeChange = this.handleTimeChange.bind(this);
         this.handleTotalAmountChange = this.handleTotalAmountChange.bind(this);
-        this.handleCalculateClick = this.handleCalculateClick.bind(this);
+        this.handleCalculate = this.handleCalculate.bind(this);
     }
 
     handleSolveForChange(event) {
@@ -61,7 +61,9 @@ class InterestCalculator extends Component {
         });
     }
 
-    handleCalculateClick() {
+    handleCalculate(e) {
+
+        e.preventDefault();
 
         if(this.state.solveFor === 'interest') {
             const {principal, rate, time} = this.state;
@@ -100,22 +102,23 @@ class InterestCalculator extends Component {
 
 
     render() {
-
         return (
             <div className='interest-calculator'>
-                <SolveForDisplay onSolveForChange={this.handleSolveForChange}/>
-                <InputDisplay solveFor={this.state.solveFor}
-                              principal={this.state.principal}
-                              rate={this.state.rate}
-                              time={this.state.time}
-                              totalAmount={this.state.totalAmount}
-                              onPrincipalChange={this.handlePrincipalChange}
-                              onRateChange={this.handleRateChange}
-                              onTimeChange={this.handleTimeChange}
-                              onTotalAmountChange={this.handleTotalAmountChange}
-                />
-                <AnswerDisplay answer={this.state.answer} />
-                <button onClick={this.handleCalculateClick}>Calculate</button>
+                <form onSubmit={this.handleCalculate}>
+                    <SolveForDisplay onSolveForChange={this.handleSolveForChange}/>
+                    <InputDisplay solveFor={this.state.solveFor}
+                                principal={this.state.principal}
+                                rate={this.state.rate}
+                                time={this.state.time}
+                                totalAmount={this.state.totalAmount}
+                                onPrincipalChange={this.handlePrincipalChange}
+                                onRateChange={this.handleRateChange}
+                                onTimeChange={this.handleTimeChange}
+                                onTotalAmountChange={this.handleTotalAmountChange}
+                    />
+                    <AnswerDisplay answer={this.state.answer} />
+                    <button>Calculate</button>
+                </form>
             </div>
         );
     }
