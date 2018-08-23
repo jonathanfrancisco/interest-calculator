@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import InterestCalculator from './components/InterestCalculator.js';
 
 class App extends Component {
