@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import InterestCalculator from './components/InterestCalculator.js';
+import InterestCalculator from './components/InterestCalculator/InterestCalculator.js';
 
 class App extends Component {
   render() {

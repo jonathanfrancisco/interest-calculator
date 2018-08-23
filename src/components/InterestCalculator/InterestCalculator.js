@@ -1,8 +1,8 @@
 
 import React, {Component} from 'react';
-import InputDisplay from './InputDisplay.js';
-import SolveForDisplay from './SolveForDisplay.js';
-import AnswerDisplay from './AnswerDisplay.js';
+import InputDisplay from '../InputDisplay/InputDisplay.js';
+import SolveForDisplay from '../SolveForDisplay/SolveForDisplay.js';
+import AnswerDisplay from '../AnswerDisplay/AnswerDisplay.js';
 
 class InterestCalculator extends Component {
 
