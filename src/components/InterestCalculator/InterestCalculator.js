@@ -1,8 +1,17 @@
 
 import React, {Component} from 'react';
+
+// COMPONENTS
 import InputDisplay from '../InputDisplay/InputDisplay.js';
 import SolveForDisplay from '../SolveForDisplay/SolveForDisplay.js';
 import AnswerDisplay from '../AnswerDisplay/AnswerDisplay.js';
+
+// CSS
+
+
+import '../../bulma.css';
+import './InterestCalculator.css';
+
 
 class InterestCalculator extends Component {
 
@@ -103,22 +112,24 @@ class InterestCalculator extends Component {
 
     render() {
         return (
-            <div className='interest-calculator'>
-                <form onSubmit={this.handleCalculate}>
-                    <SolveForDisplay onSolveForChange={this.handleSolveForChange}/>
-                    <InputDisplay solveFor={this.state.solveFor}
-                                principal={this.state.principal}
-                                rate={this.state.rate}
-                                time={this.state.time}
-                                totalAmount={this.state.totalAmount}
-                                onPrincipalChange={this.handlePrincipalChange}
-                                onRateChange={this.handleRateChange}
-                                onTimeChange={this.handleTimeChange}
-                                onTotalAmountChange={this.handleTotalAmountChange}
-                    />
-                    <AnswerDisplay answer={this.state.answer} />
-                    <button>Calculate</button>
-                </form>
+            <div className='interest-calculator card'>
+                <div className='card-content'>
+                    <form onSubmit={this.handleCalculate}>
+                        <SolveForDisplay onSolveForChange={this.handleSolveForChange}/>
+                        <InputDisplay solveFor={this.state.solveFor}
+                                    principal={this.state.principal}
+                                    rate={this.state.rate}
+                                    time={this.state.time}
+                                    totalAmount={this.state.totalAmount}
+                                    onPrincipalChange={this.handlePrincipalChange}
+                                    onRateChange={this.handleRateChange}
+                                    onTimeChange={this.handleTimeChange}
+                                    onTotalAmountChange={this.handleTotalAmountChange}
+                        />
+                        <AnswerDisplay answer={this.state.answer} />
+                        <input className='button is-link' type="submit" value="Calculate"></input>
+                    </form>
+                </div>
             </div>
         );
     }

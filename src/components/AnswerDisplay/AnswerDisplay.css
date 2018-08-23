@@ -1,0 +1,7 @@
+.interest-calculator__answer-display > * {
+    display: inline-block;
+}
+
+.interest-calculator__answer-display h4 {
+    margin-right: 5px;
+}
