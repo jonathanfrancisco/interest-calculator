@@ -103,7 +103,7 @@ class InterestCalculator extends Component {
             const {rate, totalAmount, principal}  = this.state;
             const time = (1/(rate/100)) * ((totalAmount / principal) - 1);
             this.setState({
-                answer: time
+                answer: time+' year(s)'
             });
         }
 
