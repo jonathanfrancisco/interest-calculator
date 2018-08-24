@@ -93,8 +93,7 @@ class InterestCalculator extends Component {
 
         else if(this.state.solveFor === 'rate') {
             const {time, totalAmount, principal} = this.state;
-            const rate = (1/time) * ((totalAmount / principal) - 1);
-           
+            const rate = (1/time) * ((totalAmount / principal) - 1) * 100;
             this.setState({
                 answer: rate.toFixed(2)+ '%'
             });
