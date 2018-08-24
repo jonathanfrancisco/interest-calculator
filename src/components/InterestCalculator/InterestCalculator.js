@@ -41,7 +41,8 @@ class InterestCalculator extends Component {
             principal: '',
             rate: '',
             time: '',
-            totalAmount: ''
+            totalAmount: '',
+            answer: ''
         });
 
     }
