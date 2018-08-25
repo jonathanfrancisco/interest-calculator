@@ -83,6 +83,14 @@ class InterestCalculator extends Component {
            });
         }
 
+        else if(this.state.solveFor === 'totalAmount') {
+            const {principal, rate, time} = this.state;
+            const totalAmount = (principal * (1+((rate/100) * time)));
+            this.setState({
+                answer: totalAmount
+            });
+        }
+
         else if(this.state.solveFor === 'principal') {
             const {totalAmount, rate, time} = this.state;
             const principal = (totalAmount / (1+((rate/100)*time)));

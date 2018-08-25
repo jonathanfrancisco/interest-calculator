@@ -14,7 +14,7 @@ const InputDisplay = (props) => {
     // handlers
     const {onPrincipalChange, onRateChange, onTimeChange, onTotalAmountChange} = props;
    
-    if(props.solveFor === 'interest')
+    if(props.solveFor === 'interest' || props.solveFor === 'totalAmount')
         return (
             <div className='interest-calculator__input-display'>
                 <label>Prinicipal Amount (P)</label>
