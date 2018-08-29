@@ -3,12 +3,10 @@ import React, {Component} from 'react';
 
 // COMPONENTS
 import InputDisplay from '../InputDisplay/InputDisplay.js';
-import SolveForDisplay from '../SolveForDisplay/SolveForDisplay.js';
+import Settings from '../Settings/Settings.js';
 import AnswerDisplay from '../AnswerDisplay/AnswerDisplay.js';
 
 // CSS
-
-
 import '../../bulma.css';
 import './InterestCalculator.css';
 
@@ -123,7 +121,7 @@ class InterestCalculator extends Component {
             <div className='interest-calculator card'>
                 <div className='card-content'>
                     <form onSubmit={this.handleCalculate}>
-                        <SolveForDisplay onSolveForChange={this.handleSolveForChange}/>
+                        <Settings onSolveForChange={this.handleSolveForChange}/>
                         <InputDisplay solveFor={this.state.solveFor}
                                     principal={this.state.principal}
                                     rate={this.state.rate}

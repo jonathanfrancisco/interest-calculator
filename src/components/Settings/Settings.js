@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const SolveForDisplay = (props) => {
+const Settings = (props) => {
     return (
         <React.Fragment>
         <p>Solve for:</p>
@@ -20,4 +20,4 @@ const SolveForDisplay = (props) => {
 }
 
 
-export default SolveForDisplay;
+export default Settings;
