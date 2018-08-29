@@ -16,6 +16,7 @@ class InterestCalculator extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            mode: '',
             solveFor: 'interest',
             principal: '',
             rate: '',
@@ -23,12 +24,19 @@ class InterestCalculator extends Component {
             totalAmount: '',
             answer: ''
         }
+        this.handleChangeMode = this.handleChangeMode.bind(this);
         this.handleSolveForChange = this.handleSolveForChange.bind(this);
         this.handlePrincipalChange = this.handlePrincipalChange.bind(this);
         this.handleRateChange = this.handleRateChange.bind(this);
         this.handleTimeChange = this.handleTimeChange.bind(this);
         this.handleTotalAmountChange = this.handleTotalAmountChange.bind(this);
         this.handleCalculate = this.handleCalculate.bind(this);
+    }
+
+    handleChangeMode(e) {
+        this.setState({
+            mode: e.target.value
+        });
     }
 
     handleSolveForChange(event) {
@@ -44,7 +52,7 @@ class InterestCalculator extends Component {
         });
 
     }
-
+    
     handlePrincipalChange(e) {
         this.setState({
             principal: e.target.value
@@ -115,13 +123,12 @@ class InterestCalculator extends Component {
 
     }
 
-
     render() {
         return (
             <div className='interest-calculator card'>
                 <div className='card-content'>
                     <form onSubmit={this.handleCalculate}>
-                        <Settings onSolveForChange={this.handleSolveForChange}/>
+                        <Settings onChangeMode={this.handleChangeMode} onSolveForChange={this.handleSolveForChange}/>
                         <InputDisplay solveFor={this.state.solveFor}
                                     principal={this.state.principal}
                                     rate={this.state.rate}
