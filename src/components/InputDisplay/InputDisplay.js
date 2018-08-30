@@ -1,70 +1,64 @@
 
-
-
 import React from 'react';
 
-import './InputDisplay.css';
+// COMPONENTS
+import InterestFormulaInput from '../InterestFormulaInput/InterestFormulaInput.js';
+import PrincipalFormulaInput from '../PrincipalFormulaInput/PrincipalFormulaInput.js';
+import RateFormulaInput from '../RateFormulaInput/RateFormulaInput.js';
+import TimeFormulaInput from '../TimeFormulaInput/TimeFormulaInput.js';
 
+// CSS 
+import './InputDisplay.css';
 
 const InputDisplay = (props) => {
 
-    // values
+    // VALUES
     const {principal, rate, time, totalAmount} = props;
 
-    // handlers
+    // HANDLERS
     const {onPrincipalChange, onRateChange, onTimeChange, onTotalAmountChange} = props;
    
     if(props.solveFor === 'interest' || props.solveFor === 'totalAmount')
         return (
             <div className='interest-calculator__input-display'>
-                <label>Prinicipal Amount (P)</label>
-                <input className='input' required onChange={onPrincipalChange} value={principal} name='principal' type='number' />
-                <br />
-                <label>Rate (r): % per year</label>
-                <input className='input' required onChange={onRateChange} value={rate} name='rate' type='number' />
-                <br />
-                <label>Time (t) in years</label>
-                <input className='input' required onChange={onTimeChange} value={time} name='time' type='number' />
+                <InterestFormulaInput principal={principal} 
+                                    rate={rate} time={time} 
+                                    onPrincipalChange={onPrincipalChange}
+                                    onRateChange={onRateChange}
+                                    onTimeChange={onTimeChange} />
             </div>
         );
     else if(props.solveFor === 'principal')
         return (
             <div className='interest-calculator__input-display'>
-                <label>Total Amount (A)</label>
-                <input className='input' required onChange={onTotalAmountChange} value={totalAmount}name='amount' type='number' />
-                <br />
-                <label>Rate (r): % per year</label>
-                <input className='input' required onChange={onRateChange} value={rate} name='rate' type='number' />
-                <br />
-                <label>Time (t) in years</label>
-                <input className='input' required onChange={onTimeChange} value={time} name='time' type='number' />
+               <PrincipalFormulaInput totalAmount={totalAmount}
+                                    rate={rate}
+                                    time={time}
+                                    onTotalAmountChange={onTotalAmountChange}
+                                    onRateChange={onRateChange}
+                                    onTimeChange={onTimeChange} />
             </div>
         );
     else if(props.solveFor === 'rate')
         return (
             <div className='interest-calculator__input-display'>
-                <label>Prinicipal Amount (P)</label>
-                <input className='input' required onChange={onPrincipalChange} value={principal} name='principal' type='number' />
-                <br />
-                <label>Total Amount (A)</label>
-                <input className='input' required onChange={onTotalAmountChange} value={totalAmount}name='amount' type='number' />
-                <br />
-                <label>Time (t) in years</label>
-                <input className='input' required onChange={onTimeChange} value={time}name='time' type='number' />
+                <RateFormulaInput principal={principal}
+                                totalAmount={totalAmount}
+                                time={time}
+                                onPrincipalChange={onPrincipalChange}
+                                onTotalAmountChange={onTotalAmountChange}
+                                onTimeChange={onTimeChange} />
             </div>
         );
     else if(props.solveFor === 'time')
         return (
             <div className='interest-calculator__input-display'>
-                <label>Prinicipal Amount (P)</label>
-                <input className='input' required onChange={onPrincipalChange} value={principal} name='principal' type='number' />
-                <br />
-                <label>Total Amount (A)</label>
-                <input className='input' required onChange={onTotalAmountChange} value={totalAmount} name='amount' type='number' />
-                <br />
-                <label>Rate (r): % per year</label>
-                <input className='input' required onChange={onRateChange} value={rate} name='rate' type='number' />
-                <br />
+              <TimeFormulaInput principal={principal}
+                                totalAmount={totalAmount}
+                                rate={rate}
+                                onPrincipalChange={onPrincipalChange}
+                                onTotalAmountChange={onTotalAmountChange}
+                                onRateChange={onRateChange} />
             </div>
         );
 }
