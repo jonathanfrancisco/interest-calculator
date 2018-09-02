@@ -8,11 +8,11 @@ const Settings = (props) => {
         <p>Mode:</p>
        <div className="control">
         <label className="radio">
-            <input onChange={props.onChangeMode} value='simple' type="radio" name="mode"/>
+            <input checked={props.mode === 'simple' ? true : false} onChange={props.onChangeMode} value='simple' type="radio" name="mode"/>
             Simple Interest
         </label>
         <label className="radio">
-            <input onChange={props.onChangeMode} value='compound' type="radio" name="mode"/>
+            <input  checked={props.mode === 'compound' ? true : false} onChange={props.onChangeMode} value='compound' type="radio" name="mode"/>
             Compound Interest
         </label>
         </div>

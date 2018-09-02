@@ -6,6 +6,7 @@ import InterestFormulaInput from '../InterestFormulaInput/InterestFormulaInput.j
 import PrincipalFormulaInput from '../PrincipalFormulaInput/PrincipalFormulaInput.js';
 import RateFormulaInput from '../RateFormulaInput/RateFormulaInput.js';
 import TimeFormulaInput from '../TimeFormulaInput/TimeFormulaInput.js';
+import CompoundingPeriodList from '../CompoundingPeriodSelect/CompoundingPeriodSelect.js';
 
 // CSS 
 import './InputDisplay.css';
@@ -13,11 +14,11 @@ import './InputDisplay.css';
 const InputDisplay = (props) => {
 
     // VALUES
-    const {principal, rate, time, totalAmount} = props;
+    const {principal, rate, time, totalAmount, mode} = props;
 
     // HANDLERS
-    const {onPrincipalChange, onRateChange, onTimeChange, onTotalAmountChange} = props;
-   
+    const {onPrincipalChange, onRateChange, onTimeChange, onTotalAmountChange, onPeriodChange} = props;
+  
     if(props.solveFor === 'interest' || props.solveFor === 'totalAmount')
         return (
             <div className='interest-calculator__input-display'>
@@ -25,7 +26,11 @@ const InputDisplay = (props) => {
                                     rate={rate} time={time} 
                                     onPrincipalChange={onPrincipalChange}
                                     onRateChange={onRateChange}
-                                    onTimeChange={onTimeChange} />
+                                    onTimeChange={onTimeChange}>
+                { mode === 'compound' ? (
+                   <CompoundingPeriodList onPeriodChange={onPeriodChange} />
+                ) : null }
+                </InterestFormulaInput>
             </div>
         );
     else if(props.solveFor === 'principal')
@@ -36,7 +41,11 @@ const InputDisplay = (props) => {
                                     time={time}
                                     onTotalAmountChange={onTotalAmountChange}
                                     onRateChange={onRateChange}
-                                    onTimeChange={onTimeChange} />
+                                    onTimeChange={onTimeChange}>
+                { mode === 'compound' ? (
+                   <CompoundingPeriodList onPeriodChange={onPeriodChange} />
+                ) : null }                        
+                </PrincipalFormulaInput>
             </div>
         );
     else if(props.solveFor === 'rate')
@@ -47,7 +56,11 @@ const InputDisplay = (props) => {
                                 time={time}
                                 onPrincipalChange={onPrincipalChange}
                                 onTotalAmountChange={onTotalAmountChange}
-                                onTimeChange={onTimeChange} />
+                                onTimeChange={onTimeChange}>
+                { mode === 'compound' ? (
+                   <CompoundingPeriodList onPeriodChange={onPeriodChange} />
+                ) : null }   
+                </RateFormulaInput>
             </div>
         );
     else if(props.solveFor === 'time')
@@ -58,9 +71,17 @@ const InputDisplay = (props) => {
                                 rate={rate}
                                 onPrincipalChange={onPrincipalChange}
                                 onTotalAmountChange={onTotalAmountChange}
-                                onRateChange={onRateChange} />
+                                onRateChange={onRateChange}>
+                { mode === 'compound' ? (
+                   <CompoundingPeriodList onPeriodChange={onPeriodChange} />
+                ) : null }   
+                </TimeFormulaInput>
             </div>
         );
+
+
+
+
 }
 
 export default InputDisplay;

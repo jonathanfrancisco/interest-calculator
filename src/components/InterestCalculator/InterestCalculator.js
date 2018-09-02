@@ -22,6 +22,7 @@ class InterestCalculator extends Component {
             rate: '',
             time: '',
             totalAmount: '',
+            period: NaN,
             answer: ''
         }
         this.handleChangeMode = this.handleChangeMode.bind(this);
@@ -30,7 +31,16 @@ class InterestCalculator extends Component {
         this.handleRateChange = this.handleRateChange.bind(this);
         this.handleTimeChange = this.handleTimeChange.bind(this);
         this.handleTotalAmountChange = this.handleTotalAmountChange.bind(this);
+        this.handlePeriodChange = this.handlePeriodChange.bind(this);
         this.handleCalculate = this.handleCalculate.bind(this);
+    }
+
+
+    componentDidMount() {
+        this.setState({
+            mode: 'simple',
+            period: 1
+        });
     }
 
     handleChangeMode(e) {
@@ -50,7 +60,14 @@ class InterestCalculator extends Component {
             totalAmount: '',
             answer: ''
         });
+    }
 
+    handlePeriodChange(e) {
+        const select = e.target;
+        const selectedOption = select.options[select.selectedIndex];
+        this.setState({
+            period: selectedOption.value
+        });
     }
     
     handlePrincipalChange(e) {
@@ -128,8 +145,9 @@ class InterestCalculator extends Component {
             <div className='interest-calculator card'>
                 <div className='card-content'>
                     <form onSubmit={this.handleCalculate}>
-                        <Settings onChangeMode={this.handleChangeMode} onSolveForChange={this.handleSolveForChange}/>
-                        <InputDisplay solveFor={this.state.solveFor}
+                        <Settings mode={this.state.mode} onChangeMode={this.handleChangeMode} onSolveForChange={this.handleSolveForChange}/>
+                        <InputDisplay mode={this.state.mode}
+                                    solveFor={this.state.solveFor}
                                     principal={this.state.principal}
                                     rate={this.state.rate}
                                     time={this.state.time}
@@ -138,6 +156,7 @@ class InterestCalculator extends Component {
                                     onRateChange={this.handleRateChange}
                                     onTimeChange={this.handleTimeChange}
                                     onTotalAmountChange={this.handleTotalAmountChange}
+                                    onPeriodChange={this.handlePeriodChange}
                         />
                         <AnswerDisplay answer={this.state.answer} />
                         <input className='button is-link' type="submit" value="Calculate"></input>
