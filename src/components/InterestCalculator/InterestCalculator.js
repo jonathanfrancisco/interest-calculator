@@ -145,23 +145,45 @@ class InterestCalculator extends Component {
         else if(this.state.mode === 'compound') {
 
             if(this.state.solveFor === 'interest') {
-
+                const {principal, rate, time, period} = this.state;
+                const totalAmount =  principal * Math.pow((1+ ((rate/100)/period)),(period * time));
+                const p = totalAmount / Math.pow(1 + ((rate/100) / period), (period*time));
+                const interest = totalAmount - p;
+                this.setState({
+                    answer: interest.toFixed(2)
+                });
             }
             
             else if(this.state.solveFor === 'totalAmount') {
-              
-            }
+                const {principal, rate, time, period} = this.state;
+                const totalAmount =  principal * Math.pow((1+ ((rate/100)/period)),(period * time));
+                this.setState({
+                    answer: totalAmount.toFixed(2)
+                });
+            }   
 
             else if(this.state.solveFor === 'principal') {
-
+                const {totalAmount, rate, period, time} = this.state;
+                const principal = totalAmount / Math.pow(1 + ((rate/100) / period), (period*time));
+                this.setState({
+                    answer: Math.round(principal)
+                });
             }
 
             else if(this.state.solveFor === 'rate') {
-
+                const {principal, totalAmount, time, period} = this.state;
+                const rate = period * ((Math.pow((totalAmount / principal), (1/(period/time)))) - 1);
+                this.setState({
+                    answer: Math.round(rate)+'%'
+                });
             }
 
             else if(this.state.solveFor === 'time') {
-
+                const {principal, totalAmount, rate, period} = this.state;
+                const time = Math.log(totalAmount / principal) / (period * ( Math.log(1+((rate/100) / period))));
+                this.setState({
+                    answer: Math.round(time) + ' year(s)'
+                });
             }
 
         }
