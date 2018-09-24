@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import InputDisplay from '../InputDisplay/InputDisplay.js';
 import Settings from '../Settings/Settings.js';
 import AnswerDisplay from '../AnswerDisplay/AnswerDisplay.js';
+import CompoundInterestTable from '../CompoundInterestTable/CompoundInterestTable.js';
 
 // CSS
 import '../../bulma.css';
@@ -23,7 +24,8 @@ class InterestCalculator extends Component {
             time: '',
             totalAmount: '',
             period: NaN,
-            answer: ''
+            answer: '',
+            compounds: []
         }
         this.handleChangeMode = this.handleChangeMode.bind(this);
         this.handleSolveForChange = this.handleSolveForChange.bind(this);
@@ -185,15 +187,15 @@ class InterestCalculator extends Component {
                     answer: Math.round(time) + ' year(s)'
                 });
             }
-
+           
         }
 
     }
 
     render() {
         return (
-            <div className='interest-calculator card'>
-                <div className='card-content'>
+            <div className='interest-calculator card columns'>
+                <div className='card-content column'>
                     <form onSubmit={this.handleCalculate}>
                         <Settings mode={this.state.mode} onChangeMode={this.handleChangeMode} onSolveForChange={this.handleSolveForChange}/>
                         <InputDisplay mode={this.state.mode}
@@ -212,6 +214,7 @@ class InterestCalculator extends Component {
                         <input className='button is-link' type="submit" value="Calculate"></input>
                     </form>
                 </div>
+               {this.state.mode === 'compound' ? (<CompoundInterestTable period={this.state.period} time={this.state.time} />) : null}
             </div>
         );
     }
@@ -222,3 +225,4 @@ class InterestCalculator extends Component {
 export default InterestCalculator;
 
 
+ 
