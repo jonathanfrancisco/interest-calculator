@@ -15,19 +15,20 @@ class CompoundInterestTable extends React.Component {
     render() {
 
         const periodDictionary = {
-            '1': 'Yearly',
-            '4': 'Quarterly',
-            '2': 'Semi-Annually',
-            '12': 'Monthly'
+            '1': 'Year',
+            '4': 'Quarter',
+            '2': 'Semi-Annual',
+            '12': 'Month'
         }
 
         return (
             <div className='column'>
                 <h2 className='title is-4'>Compound Interest time table</h2>
+                <h6>Compounded {periodDictionary[this.props.period]}ly in {this.props.time} year(s)</h6>
                 <table className='table'>
                     <thead>
                         <tr>
-                            <th>{periodDictionary[this.props.period]} in {this.props.time} year(s)</th>
+                            <th>{periodDictionary[this.props.period]}</th>
                             <th>Loan at Start</th>
                             <th>Interest</th>
                             <th>Loan at End</th>
